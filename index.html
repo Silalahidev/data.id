@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Login Form</title>
+</head>
+
+<body>
+
+    <div class="box">
+    <div class="flip-card-inner">
+        <!-- Login Section -->
+        <div class="box-login">
+            <ul>
+                <form action="" method="get" id="login-form">
+                    <h1>LOGIN</h1>
+                    <div class="email-login">
+                        <input class="inpt" type="email" name="email" id="login-email" placeholder="Email" required>
+                        <i class='fa fa-envelope'></i>
+                    </div>
+                    <div class="password-login">
+                        <input class="inpt" type="password" name="password" id="login-password" placeholder="Password" required>
+                        <i id="eye-login" class="fa fa-eye-slash"></i>
+                    </div>
+                    <button type="submit" class="btn">LOGIN</button>
+                </form>
+                <div class="register-link">
+                    <p>Don't have an account? <a href="#" onclick="flip()">Sign Up</a></p>
+                </div>
+            </ul>
+        </div>
+
+        <!-- Signup Section -->
+        <div class="box-signup">
+            <ul>
+                <form action="" method="get" id="signup-form">
+                    <h1>SIGN UP</h1>
+                    <div class="user-signup">
+                        <input class="inpt" type="text" name="username" id="signup-username" placeholder="User Name" required>
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="email-signup">
+                        <input class="inpt" type="email" name="email" id="signup-email" placeholder="Email" required>
+                        <i class='fa fa-envelope'></i>
+                    </div>
+                    <div class="password-signup">
+                        <input class="inpt" type="password" name="password" id="signup-password" placeholder="Password" required>
+                        <i id="eye-signup" class="fa fa-eye-slash"></i>
+                    </div>
+                    <button type="submit" class="btn">SIGN UP</button>
+                </form>
+                <div class="register-link">
+                    <p>Already have an account? <a href="#" onclick="flipAgain()">Log In</a></p>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Fungsi untuk menyimpan data pengguna ke localStorage setelah memeriksa apakah email sudah terdaftar
+    function saveUserData() {
+        const username = document.getElementById('signup-username').value;
+        const email = document.getElementById('signup-email').value;
+        const password = document.getElementById('signup-password').value;
+
+        // Mengambil data pengguna yang sudah ada dari localStorage
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+
+        // Memeriksa apakah email sudah terdaftar
+        const isEmailRegistered = users.some(user => user.email === email);
+
+        if (isEmailRegistered) {
+            alert('Email telah terdaftar. Gunakan email lain.');
+            return; // Menghentikan fungsi jika email sudah terdaftar
+        }
+
+        // Membuat objek pengguna baru
+        const user = {
+            username: username,
+            email: email,
+            password: password
+        };
+
+        // Menambahkan pengguna baru ke array users dan menyimpan kembali di localStorage
+        users.push(user);
+        localStorage.setItem('users', JSON.stringify(users));
+
+        // Notifikasi pendaftaran sukses
+        alert('User registered successfully!');
+
+        // Tampilkan form login setelah signup berhasil
+        flipAgain();
+    }
+
+    // Fungsi untuk login dengan memeriksa localStorage
+    function loginUser() {
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+
+        // Mengambil data pengguna dari localStorage
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const user = users.find(user => user.email === email && user.password === password);
+
+        if (user) {
+            alert('Login Successful!');
+            window.location.href = "http://127.0.0.1:3000/baaru/main.html"; // Ganti dengan URL halaman utama Anda
+        } else {
+            alert('Invalid email or password');
+        }
+    }
+
+    // Menambahkan event listener ke form sign up
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        saveUserData();
+    });
+
+    // Menambahkan event listener ke form login
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        loginUser();
+    });
+
+    // Fungsi untuk flip tampilan antara login dan sign up
+    function flip() {
+        document.querySelector('.box-login').style.display = 'none';
+        document.querySelector('.box-signup').style.display = 'block';
+    }
+
+    function flipAgain() {
+        document.querySelector('.box-login').style.display = 'block';
+        document.querySelector('.box-signup').style.display = 'none';
+    }
+</script>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

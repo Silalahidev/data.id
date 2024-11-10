@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Enthusiast </title>
+    <title>Data Enthusiast</title>
     <style>
         /* CSS Reset */
         * {
@@ -12,13 +12,13 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-        
+
         /* Body */
         body {
             background-color: #f4f6f8;
             color: #333;
         }
-        
+
         /* Navbar */
         .navbar {
             background-color: #00509e;
@@ -27,6 +27,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .navbar h1 {
@@ -120,6 +121,13 @@
             .navbar h1 {
                 font-size: 1.4em;
             }
+            .navbar ul {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                width: 100%;
+                padding-top: 10px;
+            }
             .navbar ul li {
                 font-size: 1em;
             }
@@ -130,13 +138,32 @@
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
+
+        @media (max-width: 480px) {
+            .navbar h1 {
+                font-size: 1.2em;
+            }
+            .navbar ul li {
+                font-size: 0.9em;
+            }
+            .main h2 {
+                font-size: 1.8em;
+            }
+            .main p {
+                font-size: 1em;
+                padding: 0 10px;
+            }
+            .modules {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Navbar -->
     <header class="navbar">
-        <h1>Data Enthusiast ! </h1>
+        <h1>Data Enthusiast</h1>
         <ul>
             <li>Home</li>
             <li>About</li>
@@ -155,59 +182,15 @@
             <div class="module-card">
                 <a href="https://uis.unesco.org/sites/default/files/documents/8._nadi-2016_introduction_to_data_analysis.pdf">Data Analysis Basics</a>
             </div>
-            <div class="module-card">
-                <a href="https://www.simplilearn.com/data-analytics-basics-beginners-guide-pdf">Introduction to Machine Learning</a>
-            </div>
-            <div class="module-card">
-                <a href="https://uis.unesco.org/sites/default/files/documents/8._nadi-2016_introduction_to_data_analysis.pdf">Data Visualization Techniques</a>
-            </div>
-            <div class="module-card">
-                <a href="https://www.simplilearn.com/data-analytics-basics-beginners-guide-pdf">Advanced Statistics</a>
-            </div>
-            <div class="module-card">
-                <a href="https://www.simplilearn.com/data-analytics-basics-beginners-guide-pdf">Data Cleaning and Preprocessing</a>
-            </div>
-            <div class="module-card">
-                <a href="https://www.simplilearn.com/data-analytics-basics-beginners-guide-pdf">Big Data Basics</a>
-            </div>
-            <div class="module-card">
-                <a href="https://www.simplilearn.com/data-analytics-basics-beginners-guide-pdf">Introduction to Deep Learning</a>
-            </div>
-            <div class="module-card">
-                <a href="https://www.simplilearn.com/data-analytics-basics-beginners-guide-pdf">SQL for Data Analysis</a>
-            </div>
-            <div class="module-card">
-                <a href="https://www.simplilearn.com/data-analytics-basics-beginners-guide-pdf">Python for Data Science</a>
-            </div>
-            <div class="module-card">
-                <a href="https://www.simplilearn.com/data-analytics-basics-beginners-guide-pdf">R for Statistical Computing</a>
-            </div>
-            <div class="module-card">
-                <a href="#tableau">Data Visualization with Tableau</a>
-            </div>
-            <div class="module-card">
-                <a href="#powerbi">Business Intelligence with Power BI</a>
-            </div>
-            <div class="module-card">
-                <a href="#excel">Excel for Data Analysis</a>
-            </div>
-            <div class="module-card">
-                <a href="#time-series">Time Series Analysis</a>
-            </div>
-            <div class="module-card">
-                <a href="#nlp">Natural Language Processing</a>
-            </div>
-            <div class="module-card">
-                <a href="#cloud-computing">Cloud Computing for Data Science</a>
-            </div>
+            <!-- Additional module cards here... -->
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <em>
-        <p>  Data Enthusiast By Jadihot Silalahi &copy; 2024 </p>
-       </em>
+            <p>Data Enthusiast By Jadihot Silalahi &copy; 2024</p>
+        </em>
     </footer>
 
 </body>
